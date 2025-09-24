@@ -1,0 +1,28 @@
+.tableContainer{
+    padding: 20px;
+    margin: auto;
+    max-width: 100%;
+    background-color: #f9f9f9;
+    font-size: 1.3em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    /* width: 50px; */
+    padding: 5px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+th,td{
+    width: 200px;
+    text-align: center;
+}
