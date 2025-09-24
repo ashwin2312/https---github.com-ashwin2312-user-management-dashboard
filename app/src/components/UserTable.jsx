@@ -24,6 +24,10 @@ export default function UserTable() {
   const [order, setOrder] = useState("ASC");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // addClick = () => {
+  //   setIsModalOpen(true);
+  // }
+
   useEffect(() => {
     const fetchUsersData = async () => {
       const usersData = await getUsers();
@@ -61,6 +65,7 @@ export default function UserTable() {
     setUserData(user);
     setIsModalOpen(true);
   };
+
   const handleDelete = (id) => {
     console.log("Delete user with id:", id);
     const updatedUsers = users.filter((user) => user.id !== id);
