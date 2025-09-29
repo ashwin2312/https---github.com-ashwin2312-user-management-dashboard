@@ -13,3 +13,29 @@ export const getUsers = async () => {
 };
 
 
+export const addUser = async (data) => {
+  try {
+    const response = await axios.post(API, data);
+    return response.data;
+  } catch (error) {
+    console.log("Error while calling addUser API", error);
+  }
+};
+
+export const editUser = async (id, data) => {
+  try {
+    const response = await axios.put(`${API}/${id}`, data);
+    return response.data;
+  } catch (error) {
+    console.log("Error while calling updateUser API", error);
+  }
+};
+
+export const deleteUser = async (id) => {
+  try {
+    const response = await axios.delete(`${API}/${id}`);  
+    return response.data;
+  } catch (error) {
+    console.log("Error while calling deleteUser API", error);
+  }
+};

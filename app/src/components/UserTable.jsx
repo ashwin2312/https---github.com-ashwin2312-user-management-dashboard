@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import styles from "./usertable.module.css";
 import UserForm from "./UserForm";
 import Modal from "react-modal";
+import Pagination from "./Pagination";
 
 Modal.setAppElement("#root");
 
@@ -24,10 +25,6 @@ export default function UserTable() {
   const [order, setOrder] = useState("ASC");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // addClick = () => {
-  //   setIsModalOpen(true);
-  // }
-
   useEffect(() => {
     const fetchUsersData = async () => {
       const usersData = await getUsers();
@@ -35,8 +32,6 @@ export default function UserTable() {
     };
     fetchUsersData();
   }, []);
-
-  console.log("Users state::", users);
 
   const getValue = (obj, path) =>
     path.split(".").reduce((val, key) => val?.[key], obj); // obj["company"]["name"]
@@ -61,13 +56,13 @@ export default function UserTable() {
   };
 
   const handleEdit = (user) => {
-    console.log("Edit user details::", user);
+    // console.log("Edit user details::", user);
     setUserData(user);
     setIsModalOpen(true);
   };
 
   const handleDelete = (id) => {
-    console.log("Delete user with id:", id);
+    // console.log("Delete user with id:", id);
     const updatedUsers = users.filter((user) => user.id !== id);
     setUsers(updatedUsers);
   };
@@ -75,7 +70,7 @@ export default function UserTable() {
   return (
     <div className={styles.tableContainer}>
       <SearchBar />
-      <table>
+      {users.length>10?(<Pagination sortOrder={sortOrder} handleEdit={handleEdit} handleDelete={handleDelete} />):(<table>
         <thead>
           <tr>
             <th>
@@ -113,7 +108,9 @@ export default function UserTable() {
               </tr>
             ))}
         </tbody>
-      </table>
+      </table>)}
+      
+      
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}
