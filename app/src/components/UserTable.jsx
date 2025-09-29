@@ -70,7 +70,12 @@ export default function UserTable() {
   return (
     <div className={styles.tableContainer}>
       <SearchBar />
-      {users.length>10?(<Pagination sortOrder={sortOrder} handleEdit={handleEdit} handleDelete={handleDelete} />):(<table>
+      <Pagination
+        sortOrder={sortOrder}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+      {/* {users.length>10?(<Pagination sortOrder={sortOrder} handleEdit={handleEdit} handleDelete={handleDelete} />):(<table>
         <thead>
           <tr>
             <th>
@@ -108,9 +113,8 @@ export default function UserTable() {
               </tr>
             ))}
         </tbody>
-      </table>)}
-      
-      
+      </table>)} */}
+
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}

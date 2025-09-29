@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import styles from "./pagination.module.css";
 
 export default function Pagination({ sortOrder, handleEdit, handleDelete }) {
   // const [limit, setLimit] = useState(0);
@@ -81,7 +82,7 @@ export default function Pagination({ sortOrder, handleEdit, handleDelete }) {
             ))}
         </tbody>
       </table>
-      <div>
+      <div className={styles.buttonContainer}>
         <button onClick={handlePrevious}>Previous</button>
         <button onClick={() => setRowsPerPage(1)}>10</button>
         <button onClick={() => setRowsPerPage(2)}>25</button>
